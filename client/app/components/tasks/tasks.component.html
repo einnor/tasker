@@ -1,0 +1,19 @@
+<form class="well">
+  <div class="form-group">
+    <input class="form-control" type="text" placeholder="Add a task..." />
+  </div>
+</form>
+
+<div class="task-list">
+  <div *ngFor="let task of tasks">
+    <div class="col-md-1">
+      <input type="checkbox" />
+    </div>
+    <div class="col-md-8">
+      {{task.title}}
+    </div>
+    <div class="col-md-3">
+      <input type="button" value="Delete" class="btn btn-danger" />
+    </div>
+  </div>
+</div>
