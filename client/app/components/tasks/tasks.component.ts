@@ -41,4 +41,17 @@ export class TasksComponent {
         if(data.n == 1) this.tasks.splice(index, 1);
       });
   }
+
+  updateStatus(task, index) {
+    if(!task) return false;
+    var _task = {
+      _id: task._id,
+      title: task.title,
+      isDone: !task.isDone
+    };
+    this.taskService.updateStatus(_task)
+      .subscribe(data => {
+        task.isDone = !task.isDone;
+      });
+  }
 }

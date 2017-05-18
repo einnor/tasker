@@ -43,6 +43,19 @@ var TasksComponent = (function () {
                 _this.tasks.splice(index, 1);
         });
     };
+    TasksComponent.prototype.updateStatus = function (task, index) {
+        if (!task)
+            return false;
+        var _task = {
+            _id: task._id,
+            title: task.title,
+            isDone: !task.isDone
+        };
+        this.taskService.updateStatus(_task)
+            .subscribe(function (data) {
+            task.isDone = !task.isDone;
+        });
+    };
     return TasksComponent;
 }());
 TasksComponent = __decorate([
