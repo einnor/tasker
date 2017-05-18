@@ -20,6 +20,29 @@ var TasksComponent = (function () {
             _this.tasks = tasks;
         });
     }
+    TasksComponent.prototype.addTask = function (event) {
+        var _this = this;
+        event.preventDefault();
+        var newTask = {
+            title: this.title,
+            isDone: false
+        };
+        this.taskService.addTask(newTask)
+            .subscribe(function (task) {
+            _this.tasks.push(task);
+            _this.title = '';
+        });
+    };
+    TasksComponent.prototype.deleteTask = function (task, index) {
+        var _this = this;
+        if (!task)
+            return false;
+        this.taskService.deleteTask(task)
+            .subscribe(function (data) {
+            if (data.n == 1)
+                _this.tasks.splice(index, 1);
+        });
+    };
     return TasksComponent;
 }());
 TasksComponent = __decorate([

@@ -26,7 +26,7 @@ router.get('/tasks/:id', function(req, res, next) {
 // Save a task
 router.post('/tasks', function(req, res, next) {
   task = req.body;
-  if(!task.title || (task.isDone + '')) {
+  if(!task.title || !(task.isDone + '')) {
     res.status(400);
     res.json({
       'error': 'Bad data'
